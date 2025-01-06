@@ -1,4 +1,7 @@
-package vu.ng.work.polygon_remover.model;
+package vu.ng.work.model.polygon_remover;
+
+import vu.ng.work.model.Model;
+import vu.ng.work.model.Polygon;
 
 import java.util.*;
 
@@ -7,11 +10,15 @@ public class PolygonRemover {
         if (model == null || polygonIndices == null || polygonIndices.isEmpty()) {
             return;
         }
-
+        for (Integer index : polygonIndices) {
+            if (index < 0 || index >= model.polygons.size()) {
+                throw new PolygonException("Polygon index " + index + " does not exist");
+            }
+        }
         // vertex liên quan tới polygon cbi được delete
         Set<Integer> potentialUnusedVertices = new HashSet<>();
 
-        // Xóa polygon và thu thập vertex
+        // Xóa polygon ngược và thu thập vertex
         for (int i = polygonIndices.size() - 1; i >= 0; i--) {
             int index = polygonIndices.get(i);
             Polygon polygon = model.polygons.get(index);
@@ -29,12 +36,9 @@ public class PolygonRemover {
             Integer vertexIndex = iterator.next();
 
             // Kiểm tra vertex có tồn tại trong bất kỳ polygon nào không
-            boolean isUsed = model.polygons.stream()
-                    .anyMatch(p -> p.getVertexIndices().contains(vertexIndex));
+            boolean isUsed = model.polygons.stream().anyMatch(p -> p.getVertexIndices().contains(vertexIndex));
 
-            if (isUsed) {
-                iterator.remove();
-            }
+            if (isUsed) {iterator.remove();}
         }
 
         // delete unsused vertex
@@ -58,9 +62,7 @@ public class PolygonRemover {
             // Điều chỉnh index
             for (int i = 0; i < indices.size(); i++) {
                 int currentIndex = indices.get(i);
-                int adjustment = (int) removedVertices.stream()
-                        .filter(removed -> removed < currentIndex)
-                        .count();
+                int adjustment = (int) removedVertices.stream().filter(removed -> removed < currentIndex).count();
 
                 indices.set(i, currentIndex - adjustment);
             }

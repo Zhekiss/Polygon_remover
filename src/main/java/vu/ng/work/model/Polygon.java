@@ -1,4 +1,4 @@
-package vu.ng.work.polygon_remover.model;
+package vu.ng.work.model;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package vu.ng.work.polygon_remover;
-import vu.ng.work.polygon_remover.model.*;
-import vu.ng.work.polygon_remover.objReader.ObjReader;
+package vu.ng.work;
+import vu.ng.work.model.Model;
+import vu.ng.work.objReader.ObjReader;
 
 import java.io.IOException;
 import java.nio.file.Files;

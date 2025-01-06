@@ -1,6 +1,8 @@
-package vu.ng.work.polygon_remover.objReader;
-import vu.ng.work.polygon_remover.math.*;
-import vu.ng.work.polygon_remover.model.*;
+package vu.ng.work.objReader;
+import vu.ng.work.math.Vector2f;
+import vu.ng.work.math.Vector3f;
+import vu.ng.work.model.Model;
+import vu.ng.work.model.Polygon;
 
 import java.util.ArrayList;
 import java.util.Arrays;

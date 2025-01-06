@@ -1,8 +1,6 @@
-package vu.ng.work.polygon_remover.model;
+package vu.ng.work.model;
 
-import vu.ng.work.polygon_remover.math.Vector2f;
-import vu.ng.work.polygon_remover.math.Vector3f;
-
+import vu.ng.work.math.*;
 import java.util.ArrayList;
 
 public class Model {

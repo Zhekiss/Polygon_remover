@@ -4,6 +4,6 @@ module vu.ng.work.polygon_remover {
 
     requires org.controlsfx.controls;
 
-    opens vu.ng.work.polygon_remover to javafx.fxml;
-    exports vu.ng.work.polygon_remover;
+    opens vu.ng.work to javafx.fxml;
+    exports vu.ng.work;
 }

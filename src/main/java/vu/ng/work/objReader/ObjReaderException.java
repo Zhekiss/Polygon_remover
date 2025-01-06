@@ -1,4 +1,4 @@
-package vu.ng.work.polygon_remover.objReader;
+package vu.ng.work.objReader;
 
 public class ObjReaderException extends RuntimeException {
     public ObjReaderException(String errorMessage, int lineInd) {
