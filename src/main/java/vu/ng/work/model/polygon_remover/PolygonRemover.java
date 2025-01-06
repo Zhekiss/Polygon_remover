@@ -10,6 +10,7 @@ public class PolygonRemover {
         if (model == null || polygonIndices == null || polygonIndices.isEmpty()) {
             return;
         }
+        // valid polygon index or not
         for (Integer index : polygonIndices) {
             if (index < 0 || index >= model.polygons.size()) {
                 throw new PolygonException("Polygon index " + index + " does not exist");
@@ -23,7 +24,7 @@ public class PolygonRemover {
             int index = polygonIndices.get(i);
             Polygon polygon = model.polygons.get(index);
 
-            // Thu thập vertex của polygon
+            // collect vertex của cả polygon sắp bị xóa
             potentialUnusedVertices.addAll(polygon.getVertexIndices());
 
             // Xóa polygon
