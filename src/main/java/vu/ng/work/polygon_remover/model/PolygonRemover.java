@@ -4,12 +4,11 @@ import java.util.*;
 
 public class PolygonRemover {
     public static void removePolygons(Model model, List<Integer> polygonIndices) {
-        // Kiểm tra đầu vào
         if (model == null || polygonIndices == null || polygonIndices.isEmpty()) {
             return;
         }
 
-        // Tập hợp các vertex liên quan
+        // vertex liên quan tới polygon cbi được delete
         Set<Integer> potentialUnusedVertices = new HashSet<>();
 
         // Xóa polygon và thu thập vertex
@@ -38,7 +37,7 @@ public class PolygonRemover {
             }
         }
 
-        // Xóa vertex không sử dụng
+        // delete unsused vertex
         List<Integer> unusedVertices = new ArrayList<>(potentialUnusedVertices);
         Collections.sort(unusedVertices, Collections.reverseOrder());
 
@@ -46,7 +45,7 @@ public class PolygonRemover {
             model.vertices.remove(index);
         }
 
-        // Điều chỉnh index
+        // adjust index
         adjustVertexIndicesInPolygons(model, unusedVertices);
     }
 
@@ -66,10 +65,5 @@ public class PolygonRemover {
                 indices.set(i, currentIndex - adjustment);
             }
         }
-    }
-
-    // Phương thức tiện ích
-    public static void removePolygonByIndex(Model model, int index) {
-        removePolygons(model, Collections.singletonList(index));
     }
 }
