@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PolygonRemoverTests {
+public class PolygonRemoverTest {
     private static Model model;
 
     @BeforeEach
