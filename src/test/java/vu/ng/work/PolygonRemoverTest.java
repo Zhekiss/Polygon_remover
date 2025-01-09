@@ -57,9 +57,9 @@ public class PolygonRemoverTest {
     void testRemoveNonExistentPolygons() {
         int startPolygonCount = model.polygons.size();
 
-        PolygonException exception = assertThrows(PolygonException.class, () -> {
-            PolygonRemover.removePolygons(model, List.of(5, 6));
-        });
+        PolygonException exception = assertThrows(PolygonException.class,
+                () -> {PolygonRemover.removePolygons(model, List.of(5, 6));}
+        );
 
         assertTrue(exception.getMessage().contains("Polygon index 5 does not exist") ||
                 exception.getMessage().contains("Polygon index 6 does not exist"));

@@ -31,13 +31,13 @@ public class PolygonRemover {
             model.polygons.remove(index);
         }
 
-        // Lọc vertex không sử dụng
+         //Lọc vertex không sử dụng
         Iterator<Integer> iterator = potentialUnusedVertices.iterator();
         while (iterator.hasNext()) {
             Integer vertexIndex = iterator.next();
 
             // Kiểm tra vertex có tồn tại trong bất kỳ polygon nào không
-            boolean isUsed = model.polygons.stream().anyMatch(p -> p.getVertexIndices().contains(vertexIndex));
+            boolean isUsed = model.polygons.stream().anyMatch(poly -> poly.getVertexIndices().contains(vertexIndex));
 
             if (isUsed) {iterator.remove();}
         }
@@ -47,7 +47,7 @@ public class PolygonRemover {
         Collections.sort(unusedVertices, Collections.reverseOrder());
 
         for (Integer index : unusedVertices) {
-            model.vertices.remove(index);
+            model.vertices.remove((int)index);
         }
 
         // adjust index
